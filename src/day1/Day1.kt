@@ -29,16 +29,15 @@ fun listDistance(left: List<Int>, right: List<Int>) {
     val itemDistance = leftList.zip(rightList) { x, y -> abs(x - y) }
 
     val sumDistance = itemDistance.sum()
-    println("\nThe distances between the lists is $sumDistance")
+    println("The distances between the lists is $sumDistance")
 }
 
 fun similarityScore(left: List<Int>, right: List<Int>) {
-    val leftList = left.sorted()
-    val rightList = right.sorted().groupingBy { it }.eachCount()
+    val rightList = right.groupingBy { it }.eachCount()
 
-    val similarity = leftList.sumOf { number ->
+    val similarity = left.sumOf { number ->
         number * (rightList[number] ?: 0)
     }
 
-    println("\nThe similarity score is $similarity")
+    println("The similarity score is $similarity")
 }
